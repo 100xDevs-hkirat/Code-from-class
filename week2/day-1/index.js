@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
   })
   
 app.get('/handleSum',handlereq)
-app.post('/postreq',postreq)
+app.put('/putreq',putreq)
 
 function handlereq(req,res)
 {
@@ -19,8 +19,8 @@ function handlereq(req,res)
     res.send(abc)
 }
 
-function  postreq(req,res){
-res.send('Post request initiated')
+function  putreq(req,res){
+res.send('put request initiated')
 }
 
 
