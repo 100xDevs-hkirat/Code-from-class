@@ -2,32 +2,42 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-function calculateSum(counter) {
-    var sum = 0;
-    for (var i =0 ; i<=counter; i++) {
-        sum = sum + i;
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+    abc = sum1(100);
+    console.log( abc + ' is the Sum') 
+  })
+  
+app.get('/handleSum',handlereq)
+app.put('/putreq',putreq)
+
+function handlereq(req,res)
+{
+    request = req.query.counter
+    abc = sum1(request);
+    abc = ( abc + ' is the Sum') 
+    res.send(abc)
+}
+
+function  putreq(req,res){
+res.send('put request initiated')
+}
+
+
+// abc = sum(100);
+// console.log( abc + ' is the Sum')
+
+
+function sum1(limit){
+    sum=0
+    for(i=0;i<limit;i++)
+    {
+        sum = sum+i
     }
     return sum;
 }
 
-function handleFirstRequest(req, res) {
-    var counter = req.query.counter;
-    var calculatedSum = calculateSum(counter);
-
-    var answer = "the sum is " + calculatedSum;
-    res.send(answer);
-}
-
-function createUser(req, res) {
-    res.send("hello world");
-}
-
-app.get('/handleSum', handleFirstRequest)
-app.put('/createUser', createUser)
-
-function started() {
+app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
-}
-
-app.listen(port, started)
+  })
 
